@@ -12,7 +12,7 @@
   "license": "MIT",
   "files": [
     "LICENSE.txt",
-    "data",
+    "tmpl",
     "src"
   ],
   "scripts": {

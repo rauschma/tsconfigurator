@@ -182,7 +182,7 @@ type GenerateVars = {
 };
 function generate({ALL=false, opts={}}: GenerateVars): void {
   const str = fs.readFileSync(
-    new URL('../data/tsconfig.tmpl.json', import.meta.url),
+    new URL('../tmpl/tsconfig.tmpl.json', import.meta.url),
     'utf-8'
   );
   const template = ejs.compile(str, {
