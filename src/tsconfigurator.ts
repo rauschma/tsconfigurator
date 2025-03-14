@@ -16,18 +16,20 @@ const u: TagFunction<string> = (templateStrings, ...substitutions) => (
 );
 
 function printHelp(): void {
-  log(`Print a tsconfig.json file to standard output`);
-  log(`Version: TypeScript 5.8`);
+  log(b`${BIN_NAME}:`);
+  log(`• Print a tsconfig.json file to standard output`);
+  log(`• Version: TypeScript 5.8`);
   log();
-  log(b`${BIN_NAME} --interactive`);
-  log(b`${BIN_NAME} --all`);
+  log(`Synonpsis:`);
+  log(b`  ${BIN_NAME} --interactive`);
+  log(b`  ${BIN_NAME} --all`);
   log();
   log(`Options:`);
-  log(`${b`--interactive -i`} Ask questions and configure output`);
-  log(`${b`--all -a`}         Print everything`);
+  log(`  ${b`--interactive -i`} Ask questions and tailor output`);
+  log(`  ${b`--all -a`}         Print everything`);
   log();
-  log(`${b`--help -h`}        Print help`);
-  log(`${b`--version -v`}     Print version`);
+  log(`  ${b`--help -h`}        Print help`);
+  log(`  ${b`--version -v`}     Print version`);
 }
 
 async function main(): Promise<void> {
@@ -143,9 +145,9 @@ const questions: Array<{kind: 'single'|'multi', message: string, choices: Choice
 ];
 
 async function generateInteractively() {
-  log(`${b`${BIN_NAME}`} prints a tsconfig.json to standard output which you can use in your project:`);
-  log(`• You may have to remove a few lines.`);
-  log(`• Which ones those are should be clear from the comments.`);
+  log(b`${BIN_NAME}:`);
+  log (`• Please answer ${questions.length} questions and tsconfigurator will print a tsconfig.json to standard output.`);
+  log(`• You may have to remove a few lines. Which ones those are should be clear from the comments.`);
   log();
 
   const opts: Record<string, boolean> = Object.create(null);
