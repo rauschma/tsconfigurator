@@ -25,7 +25,7 @@ function printHelp(): void {
   log(b`  ${BIN_NAME} --all`);
   log();
   log(`Options:`);
-  log(`  ${b`--interactive -i`} Ask questions ${questions.length} and tailor output`);
+  log(`  ${b`--interactive -i`} Ask ${questions.length} questions and tailor output`);
   log(`  ${b`--all -a`}         Print everything`);
   log();
   log(`  ${b`--help -h`}        Print help`);
