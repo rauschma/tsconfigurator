@@ -1,6 +1,6 @@
 {
   "name": "tsconfigurator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "engines": {
     "node": ">=23.6.0"
