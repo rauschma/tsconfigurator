@@ -19,6 +19,7 @@ Print help:
 
 ```
 cd tsconfigurator/
+npm install
 node src/tsconfigurator.ts -h
 ```
 
