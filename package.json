@@ -1,7 +1,7 @@
 {
   "name": "tsconfigurator",
-  "version": "1.0.4",
-  "repository": "github:rauschma/ts-expect-error",
+  "version": "1.0.5",
+  "repository": "github:rauschma/tsconfigurator",
   "type": "module",
   "engines": {
     "node": ">=23.6.0"
