@@ -1,0 +1,43 @@
+{
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    // Specified explicitly (not derived from source file paths)
+    "rootDir": ".",
+    "outDir": "dist",
+    // Nothing is ever transpiled
+    "target": "ESNext", // sets up "lib" accordingly
+    "module": "NodeNext", // sets up "moduleResolution"
+    "skipLibCheck": true, // don’t check .d.ts files
+    "resolveJsonModule": true, // allow importing JSON
+
+    //========== Type checking ==========
+    // Emptily imported modules must exist
+    "noUncheckedSideEffectImports": true,
+    // Essential: activates several useful options
+    "strict": true,
+    // Beyond "strict": less important
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+
+    //========== Help non-tsc tools ==========
+    //----- Only JS at non-type level (e.g. for type stripping) -----
+    // Enforces keyword `type` for type imports etc.
+    "verbatimModuleSyntax": true, // implies "isolatedModules"
+    // Forbids non-JavaScript language constructs such as JSX,
+    // enums, constructor parameter properties and namespaces
+    "erasableSyntaxOnly": true,
+
+    //========== Use filename extension .ts in imports ==========
+    "allowImportingTsExtensions": true,
+    // Only needed if additionally compiling to JavaScript:
+    "rewriteRelativeImportExtensions": true, // from .ts to .js
+
+    //========== Output ==========
+    // tsc only type-checks, doesn’t emit any files
+    "noEmit": true,
+  }
+}

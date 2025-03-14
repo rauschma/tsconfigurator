@@ -1,0 +1,31 @@
+{
+  "name": "tsconfigurator",
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=23.6.0"
+  },
+  "bin": {
+    "tsconfigurator": "./src/tsconfigurator.ts"
+  },
+  "author": "Axel Rauschmayer",
+  "license": "MIT",
+  "files": [
+    "LICENSE.txt",
+    "data",
+    "src"
+  ],
+  "scripts": {
+    "chmod": "chmod u+x ./src/tsconfigurator.ts",
+    "\n========== Publishing ==========": "",
+    "dry-run": "npm publish --dry-run"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^7.3.3",
+    "ejs": "^3.1.10"
+  },
+  "devDependencies": {
+    "@types/ejs": "^3.1.5",
+    "@types/node": "^22.13.10"
+  }
+}

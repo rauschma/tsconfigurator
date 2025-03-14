@@ -1,0 +1,72 @@
+{
+  "include": ["src/◆◆/◆", "test/◆◆/◆"],/*# Workaround: must not be EJS delimiter */
+  "compilerOptions": {
+    // Specified explicitly (not derived from source file paths)
+    "rootDir": ".",
+    "outDir": "dist",
+
+    //========== Target and module ==========
+/* if (ALL || opts.dontTranspile) { -*/
+    // Nothing is ever transpiled
+    "target": "ESNext", // sets up "lib" accordingly
+/* } else { -*/
+    // Transpile new JavaScript to old JavaScript
+    "target": "ES20YY", // sets up "lib" accordingly
+/* } -*/
+    "module": "NodeNext", // sets up "moduleResolution"
+    // Don’t check .d.ts files
+    "skipLibCheck": true,
+    // Emptily imported modules must exist
+    "noUncheckedSideEffectImports": true,
+    // Allow importing JSON
+    "resolveJsonModule": true,
+
+    //========== Type checking ==========
+    // Essential: activates several useful options
+    "strict": true,
+    // Beyond "strict": less important
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+
+    //========== Only JS at non-type level (enables type stripping) ==========
+    // Enforce keyword `type` for type imports etc.
+    "verbatimModuleSyntax": true, // implies "isolatedModules"
+/* if (ALL || opts.erasableSyntaxOnly) { -*/
+    // Forbid non-JavaScript language constructs such as:
+    // JSX, enums, constructor parameter properties, namespaces
+    "erasableSyntaxOnly": true,
+/* } -*/
+/* if (ALL || opts.useFilenameExtensionTsInImports) { -*/
+
+    //========== Use filename extension .ts in imports ==========
+    "allowImportingTsExtensions": true,
+    // Only needed if compiling to JavaScript
+    "rewriteRelativeImportExtensions": true, // from .ts to .js
+/* } -*/
+
+    //========== Emitted files ==========
+/* if (ALL || (!opts.tscEmitsJs && !opts.tscEmitsDts)) { -*/
+    // tsc only type-checks, doesn’t emit any files
+    "noEmit": true,
+/* } -*/
+/* if (ALL || opts.tscEmitsJs) { -*/
+    //----- Output: .js -----
+    "sourceMap": true, // .js.map files
+/* } -*/
+/* if (ALL || opts.tscEmitsDts) { -*/
+    //----- Output: .d.ts -----
+    "declaration": true, // .d.ts files
+    // “Go to definition” jumps to TS source etc.
+    "declarationMap": true, // .d.ts.map files
+    // - Enforces constraints that enable efficient .d.ts generation:
+    //   no inferred return types for exported functions etc.
+    // - Even though this option would be generally useful, it requires
+    //   that `declaration` and/or `composite` are true.
+    "isolatedDeclarations": true,
+/* } -*/
+  }
+}
