@@ -11,14 +11,13 @@
   "author": "Axel Rauschmayer",
   "license": "MIT",
   "files": [
-    "LICENSE.txt",
     "tmpl",
     "src"
   ],
   "scripts": {
     "chmod": "chmod u+x ./src/tsconfigurator.ts",
     "\n========== Publishing ==========": "",
-    "dry-run": "npm publish --dry-run"
+    "publishd": "npm publish --dry-run"
   },
   "dependencies": {
     "@inquirer/prompts": "^7.3.3",
