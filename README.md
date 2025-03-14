@@ -32,3 +32,7 @@ Don’t forget:
 ```
 
 If you use Node.js, you’ll want to install `@types/node`
+
+## Further reading
+
+* [My guide to `tsconfig.json`](https://2ality.com/2025/01/tsconfig-json.html)
