@@ -1,5 +1,9 @@
 # TSConfigurator: generate tsconfig.json
 
+* [Online version](https://rauschma.github.io/tsconfigurator/site/)
+
+## Shell command
+
 Prints a `tsconfig.json` to standard out. Supports two modes:
 
 * `tsconfigurator --all`: print a tsconfig with everything.
