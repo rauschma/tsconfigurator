@@ -175,14 +175,10 @@ async function generateInteractively() {
         throw new UnexpectedValueError(question.kind);
     }
   }
-  generate({opts});
+  generate(opts);
 }
 
-type GenerateVars = {
-  ALL?: boolean,
-  opts?: Record<string, boolean>,
-};
-function generate({ALL=false, opts={}}: GenerateVars): void {
+function generate(opts: Record<string, boolean>): void {
   const str = fs.readFileSync(
     new URL('../tmpl/tsconfig.tmpl.json', import.meta.url),
     'utf-8'
@@ -193,7 +189,7 @@ function generate({ALL=false, opts={}}: GenerateVars): void {
     closeDelimiter: '/',
     delimiter: '*', // after openDelimiter, before closeDelimiter
   });
-  console.log(template({ALL, opts}).replaceAll('◆', '*'));  
+  console.log(template(opts).replaceAll('◆', '*'));  
 }
 
 await main();

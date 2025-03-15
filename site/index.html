@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>TSConfigurator</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <style>
+    body:has(#show-all:checked) .input-group {
+      display: none;
+    }
+    body {
+      max-width: 35rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .input-group, .show-all-group, .generate-button-group {
+      margin-bottom: 1rem;
+    }
+    .question {
+      margin-bottom: 0.3rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>TSConfigurator</h1>
+  <form id="form">
+    <div class="show-all-group">
+      <label>
+        <input type="radio" name="allOrTailored" value="tailored" checked> Tailor via questions
+      </label>
+      <label>
+        <input type="radio" name="allOrTailored" value="ALL" id="show-all"> Show everything
+      </label>
+    </div>
+    <div class="input-group">
+      <div class="question">Should TypeScript only allow JavaScript features at the non-type level (forbids: JSX, enums, constructor parameter properties, namespaces)?</div>
+      <div><label>
+        <input type="radio" name="question1" value="erasableSyntaxOnly" checked> Only JavaScript (erasableSyntaxOnly)
+      </label></div>
+      <div><label>
+        <input type="radio" name="question1" value="allOfTs"> All of TypeScript
+      </label></div>
+    </div>
+    <div class="input-group">
+      <div class="question">Which filename extension do you want to use in local imports?</div>
+      <div><label>
+        <input type="radio" name="question2" value="useFilenameExtensionTsInImports" checked> .ts (needed for running TypeScript directly)
+      </label></div>
+      <div><label>
+        <input type="radio" name="question2" value="useFilenameExtensionJsInImports"> .js
+      </label></div>
+    </div>
+    <div class="input-group">
+      <div class="question">Do you want to transpile new ECMAScript features to older versions (to support older JavaScript engines)?</div>
+      <div><label>
+        <input type="radio" name="question3" value="dontTranspile" checked> Don’t transpile
+      </label></div>
+      <div><label>
+        <input type="radio" name="question3" value="transpileNewJsToOld"> Transpile new JS to old JS
+      </label></div>
+    </div>
+    <div class="input-group">
+      <div class="question">What files should tsc emit? (Select nothing if you only want to use it for type checking)</div>
+      <div><label>
+        <input type="checkbox" name="question4" value="tscEmitsJs"> .js
+      </label></div>
+      <div><label>
+        <input type="checkbox" name="question4" value="tscEmitsDts"> .d.ts
+      </label></div>
+    </div>
+  </form>
+
+  <div class="generate-button-group">
+    <button id="generate">Generate</button>
+  </div>
+
+  <div>
+    You may have to remove some lines. Which ones those are should be clear from the comments.
+  </div>
+
+  <div>
+    <textarea id="output" rows="60" style="font-family: monospace; width: 100%"></textarea>
+  </div>
+
+  <script src="ejs.min.js"></script>
+  <script type="module">
+    const form = document.getElementById('form');
+    const generate = document.getElementById('generate');
+    generate.addEventListener('click', (event) => {
+      event.preventDefault();
+      // Trigger 'formdata' event
+      const formData = new FormData(form);
+    });
+    form.addEventListener('formdata', async (event) => {
+      const opts = {};
+      for (const [_key, value] of event.formData.entries()) {
+        opts[value] = true;
+      }
+      const url = new URL('../tmpl/tsconfig.tmpl.json', import.meta.url);
+      const response = await fetch(url);
+      const str = await response.text();
+      const template = ejs.compile(str, {
+        localsName: 'opts',
+        openDelimiter: '/',
+        closeDelimiter: '/',
+        delimiter: '*', // after openDelimiter, before closeDelimiter
+      });
+      const output = document.getElementById('output');
+      output.value = template(opts).replaceAll('◆', '*');
+    });
+  </script>
+</body>
+</html>

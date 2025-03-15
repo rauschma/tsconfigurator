@@ -16,6 +16,7 @@
     "src"
   ],
   "scripts": {
+    "start": "http-server .",
     "chmod": "chmod u+x ./src/tsconfigurator.ts",
     "\n========== Publishing ==========": "",
     "publishd": "npm publish --dry-run"

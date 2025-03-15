@@ -6,10 +6,11 @@
     "outDir": "dist",
 
     //========== Target and module ==========
-/* if (ALL || opts.dontTranspile) { -*/
+/* if (opts.ALL || opts.dontTranspile) { -*/
     // Nothing is ever transpiled
     "target": "ESNext", // sets up "lib" accordingly
-/* } else { -*/
+/* } -*/
+/* if (opts.ALL || opts.transpileNewJsToOld) { -*/
     // Transpile new JavaScript to old JavaScript
     "target": "ES20YY", // sets up "lib" accordingly
 /* } -*/
@@ -31,16 +32,16 @@
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
+/* if (opts.ALL || opts.erasableSyntaxOnly) { -*/
 
     //========== Only JS at non-type level (enables type stripping) ==========
     // Enforce keyword `type` for type imports etc.
     "verbatimModuleSyntax": true, // implies "isolatedModules"
-/* if (ALL || opts.erasableSyntaxOnly) { -*/
     // Forbid non-JavaScript language constructs such as:
     // JSX, enums, constructor parameter properties, namespaces
     "erasableSyntaxOnly": true,
 /* } -*/
-/* if (ALL || opts.useFilenameExtensionTsInImports) { -*/
+/* if (opts.ALL || opts.useFilenameExtensionTsInImports) { -*/
 
     //========== Use filename extension .ts in imports ==========
     "allowImportingTsExtensions": true,
@@ -49,15 +50,15 @@
 /* } -*/
 
     //========== Emitted files ==========
-/* if (ALL || (!opts.tscEmitsJs && !opts.tscEmitsDts)) { -*/
+/* if (opts.ALL || (!opts.tscEmitsJs && !opts.tscEmitsDts)) { -*/
     // tsc only type-checks, doesn’t emit any files
     "noEmit": true,
 /* } -*/
-/* if (ALL || opts.tscEmitsJs) { -*/
+/* if (opts.ALL || opts.tscEmitsJs) { -*/
     //----- Output: .js -----
     "sourceMap": true, // .js.map files
 /* } -*/
-/* if (ALL || opts.tscEmitsDts) { -*/
+/* if (opts.ALL || opts.tscEmitsDts) { -*/
     //----- Output: .d.ts -----
     "declaration": true, // .d.ts files
     // “Go to definition” jumps to TS source etc.
