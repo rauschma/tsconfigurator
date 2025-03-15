@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>TSConfigurator</title>
-  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="reset.css">
   <style>
     body:has(#show-all:checked) .input-group {
       display: none;
@@ -92,16 +92,13 @@
 
   <script src="ejs.min.js"></script>
   <script type="module">
-    const form = document.getElementById('form');
     const generateButton = document.getElementById('generate');
-    generateButton.addEventListener('click', (event) => {
+    generateButton.addEventListener('click', async (event) => {
       event.preventDefault();
-      // Trigger 'formdata' event
+      const form = document.getElementById('form');
       const formData = new FormData(form);
-    });
-    form.addEventListener('formdata', async (event) => {
       const opts = {};
-      for (const [_key, value] of event.formData.entries()) {
+      for (const [_key, value] of formData.entries()) {
         opts[value] = true;
       }
       const url = new URL('../tmpl/tsconfig.tmpl.json', import.meta.url);
