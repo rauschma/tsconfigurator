@@ -93,8 +93,8 @@
   <script src="ejs.min.js"></script>
   <script type="module">
     const form = document.getElementById('form');
-    const generate = document.getElementById('generate');
-    generate.addEventListener('click', (event) => {
+    const generateButton = document.getElementById('generate');
+    generateButton.addEventListener('click', (event) => {
       event.preventDefault();
       // Trigger 'formdata' event
       const formData = new FormData(form);
