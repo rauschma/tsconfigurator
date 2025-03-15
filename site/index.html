@@ -13,8 +13,11 @@
       margin-left: auto;
       margin-right: auto;
     }
-    .input-group, .show-all-group, .generate-button-group {
+    .input-group, .margin-bottom {
       margin-bottom: 1rem;
+    }
+    .margin-top {
+      margin-top: 1rem;
     }
     .question {
       margin-bottom: 0.3rem;
@@ -25,7 +28,7 @@
 <body>
   <h1>TSConfigurator</h1>
   <form id="form">
-    <div class="show-all-group">
+    <div class="margin-bottom">
       <label>
         <input type="radio" name="allOrTailored" value="tailored" checked> Tailor via questions
       </label>
@@ -71,7 +74,7 @@
     </div>
   </form>
 
-  <div class="generate-button-group">
+  <div class="margin-bottom">
     <button id="generate">Generate</button>
   </div>
 
@@ -81,6 +84,10 @@
 
   <div>
     <textarea id="output" rows="60" style="font-family: monospace; width: 100%"></textarea>
+  </div>
+
+  <div class="margin-top">
+    <a href="https://github.com/rauschma/tsconfigurator">TSConfigurator</a> by <a href="https://dr-axel.de">Axel Rauschmayer</a>
   </div>
 
   <script src="ejs.min.js"></script>
