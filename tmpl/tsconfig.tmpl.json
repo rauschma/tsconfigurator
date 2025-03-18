@@ -1,10 +1,12 @@
 {
-  "include": ["src/◆◆/◆", "test/◆◆/◆"],/*# Workaround: must not be EJS delimiter */
+  "include": ["src/◆◆/◆"],/*# Workaround: must not be EJS delimiter */
   "compilerOptions": {
+/* if (opts.ALL || (opts.tscEmitsJs || opts.tscEmitsDts)) { -*/
     // Specified explicitly (not derived from source file paths)
-    "rootDir": ".",
+    "rootDir": "src",
     "outDir": "dist",
 
+/* } -*/
     //========== Target and module ==========
 /* if (opts.ALL || opts.dontTranspile) { -*/
     // Nothing is ever transpiled
