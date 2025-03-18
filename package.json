@@ -1,29 +1,36 @@
 {
   "name": "tsconfigurator",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "repository": "github:rauschma/tsconfigurator",
   "type": "module",
   "engines": {
     "node": ">=23.6.0"
   },
   "bin": {
-    "tsconfigurator": "./src/tsconfigurator.ts"
+    "tsconfigurator": "./dist/tsconfigurator.js"
   },
   "author": "Axel Rauschmayer",
   "license": "MIT",
   "files": [
-    "tmpl",
-    "src"
+    "src",
+    "dist",
+    "tmpl"
   ],
   "scripts": {
     "start": "http-server .",
-    "chmod": "chmod u+x ./src/tsconfigurator.ts",
+    "build": "npm run clean && tsc && npm run chmod",
+    "watch": "tsc --watch",
+    "clean": "shx rm -rf ./dist/*",
+    "chmod": "chmod u+x ./dist/tsconfigurator.js",
     "\n========== Publishing ==========": "",
-    "publishd": "npm publish --dry-run"
+    "prepublishOnly": "npm run build",
+    "publishd": "npm publish --dry-run",
+    "packd": "npm pack --dry-run"
   },
   "dependencies": {
     "@inquirer/prompts": "^7.3.3",
-    "ejs": "^3.1.10"
+    "ejs": "^3.1.10",
+    "shx": "^0.4.0"
   },
   "devDependencies": {
     "@types/ejs": "^3.1.5",

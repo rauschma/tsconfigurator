@@ -2,7 +2,7 @@
   "include": ["src/**/*"],
   "compilerOptions": {
     // Specified explicitly (not derived from source file paths)
-    "rootDir": ".",
+    "rootDir": "src",
     "outDir": "dist",
     // Nothing is ever transpiled
     "target": "ESNext", // sets up "lib" accordingly
@@ -36,8 +36,8 @@
     // Only needed if additionally compiling to JavaScript:
     "rewriteRelativeImportExtensions": true, // from .ts to .js
 
-    //========== Output ==========
-    // tsc only type-checks, doesn’t emit any files
-    "noEmit": true,
+    //========== Emitted files ==========
+    //----- Output: .js -----
+    "sourceMap": true, // .js.map files
   }
 }
