@@ -37,11 +37,11 @@
 /* if (opts.ALL || opts.erasableSyntaxOnly) { -*/
 
     //========== Only JS at non-type level (enables type stripping) ==========
-    // Enforce keyword `type` for type imports etc.
-    "verbatimModuleSyntax": true, // implies "isolatedModules"
     // Forbid non-JavaScript language constructs such as:
     // JSX, enums, constructor parameter properties, namespaces
     "erasableSyntaxOnly": true,
+    // Enforce keyword `type` for type imports etc.
+    "verbatimModuleSyntax": true, // implies "isolatedModules"
 /* } -*/
 /* if (opts.ALL || opts.useFilenameExtensionTsInImports) { -*/
 
