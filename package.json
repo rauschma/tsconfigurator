@@ -18,10 +18,11 @@
   ],
   "scripts": {
     "start": "http-server .",
+    "\n========== Building ==========": "",
     "build": "npm run clean && tsc && npm run chmod",
     "watch": "tsc --watch",
     "clean": "shx rm -rf ./dist/*",
-    "chmod": "chmod u+x ./dist/tsconfigurator.js",
+    "chmod": "shx chmod u+x ./dist/tsconfigurator.js",
     "\n========== Publishing ==========": "",
     "prepublishOnly": "npm run build",
     "publishd": "npm publish --dry-run",
@@ -29,11 +30,11 @@
   },
   "dependencies": {
     "@inquirer/prompts": "^7.3.3",
-    "ejs": "^3.1.10",
-    "shx": "^0.4.0"
+    "ejs": "^3.1.10"
   },
   "devDependencies": {
     "@types/ejs": "^3.1.5",
-    "@types/node": "^22.13.10"
+    "@types/node": "^22.13.10",
+    "shx": "^0.4.0"
   }
 }
